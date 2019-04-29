@@ -1,9 +1,16 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <LangVersion>latest</LangVersion>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.2</TargetFramework>
-    <RootNamespace>Phone_Number_Sort</RootNamespace>
+    <RootNamespace>ErikTheCoder.ProgrammingPearls.PhoneNumberSort</RootNamespace>
+    <AssemblyName>ErikTheCoder.ProgrammingPearls.PhoneNumberSort</AssemblyName>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ErikTheCoder.Logging" Version="1.0.5" />
+    <PackageReference Include="ErikTheCoder.ServiceContract" Version="1.0.8" />
+  </ItemGroup>
 
 </Project>
