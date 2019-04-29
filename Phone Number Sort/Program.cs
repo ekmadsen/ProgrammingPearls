@@ -13,10 +13,11 @@ namespace ErikTheCoder.ProgrammingPearls.PhoneNumberSort
     public static class Program
     {
         private const int _exclusiveMaxPhoneNumber = 10_000_000;
+        private const int _bitsPerInt = sizeof(int) * 8;
         private const string _elapsedSecondsFormat = "0.000";
         private const string _phoneNumberFormat = "000-0000";
         
-
+        
         public static async Task Main(string[] Arguments)
         {
             try
@@ -118,7 +119,7 @@ namespace ErikTheCoder.ProgrammingPearls.PhoneNumberSort
         private static async Task SortPhoneNumberFileBitwise(string InputFilename, string OutputFilename)
         {
             // Create array to track phone numbers via bitwise operations.
-            int length = Math.DivRem(_exclusiveMaxPhoneNumber, 32, out int remainder);
+            int length = Math.DivRem(_exclusiveMaxPhoneNumber, _bitsPerInt, out int remainder);
             if (remainder > 0) length++;
             int[] phoneNumberBits = new int[length];
             for (int index = 0; index < length; index++) phoneNumberBits[index] = 0;
@@ -141,11 +142,11 @@ namespace ErikTheCoder.ProgrammingPearls.PhoneNumberSort
             {
                 for (int index = 0; index < phoneNumberBits.Length; index++)
                 {
-                    for (int maskIndex = 0; maskIndex < 32; maskIndex++)
+                    for (int maskIndex = 0; maskIndex < _bitsPerInt; maskIndex++)
                     {
                         int mask = GetMask(maskIndex);
                         if ((phoneNumberBits[index] & mask) == 0) continue; // Phone number not included in input file.
-                        int phoneNumber = (index * 32) + maskIndex;
+                        int phoneNumber = (index * _bitsPerInt) + maskIndex;
                         streamWriter.WriteLine(phoneNumber.ToString(_phoneNumberFormat));
                     }
                 }
@@ -155,7 +156,7 @@ namespace ErikTheCoder.ProgrammingPearls.PhoneNumberSort
 
         private static (int Index, int Mask) GetPhoneNumberMask(int PhoneNumber)
         {
-            int index = Math.DivRem(PhoneNumber, 32, out int maskIndex);
+            int index = Math.DivRem(PhoneNumber, _bitsPerInt, out int maskIndex);
             int mask = GetMask(maskIndex);
             return (index, mask);
         }
