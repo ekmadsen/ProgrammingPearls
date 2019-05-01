@@ -27,11 +27,7 @@ namespace ErikTheCoder.ProgrammingPearls.PhoneNumberSort
             }
             catch (Exception exception)
             {
-                // This code is not thread safe.  But this program uses a single thread, so no issue.
-                ConsoleColor restoreColor = Console.ForegroundColor;
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine(exception.GetSummary(true, true));
-                Console.ForegroundColor = restoreColor;
+                SafeConsole.WriteLine(exception.GetSummary(true, true), ConsoleColor.Red);
             }
         }
 
