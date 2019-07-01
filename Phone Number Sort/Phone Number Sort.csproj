@@ -9,8 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="ErikTheCoder.Logging" Version="1.0.5" />
-    <PackageReference Include="ErikTheCoder.ServiceContract" Version="1.0.8" />
+    <PackageReference Include="ErikTheCoder.Logging" Version="1.0.6" />
+    <PackageReference Include="ErikTheCoder.Utilities" Version="1.0.1" />
   </ItemGroup>
 
 </Project>

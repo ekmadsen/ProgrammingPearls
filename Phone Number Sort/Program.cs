@@ -5,7 +5,7 @@ using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
 using ErikTheCoder.Logging;
-using ErikTheCoder.ServiceContract;
+using ErikTheCoder.Utilities;
 
 
 namespace ErikTheCoder.ProgrammingPearls.PhoneNumberSort
@@ -23,11 +23,11 @@ namespace ErikTheCoder.ProgrammingPearls.PhoneNumberSort
             try
             {
                 await Run(Arguments);
-                SafeConsole.WriteLine(null);
+                ThreadsafeConsole.WriteLine(null);
             }
             catch (Exception exception)
             {
-                SafeConsole.WriteLine(exception.GetSummary(true, true), ConsoleColor.Red);
+                ThreadsafeConsole.WriteLine(exception.GetSummary(true, true), ConsoleColor.Red);
             }
         }
 
@@ -39,17 +39,17 @@ namespace ErikTheCoder.ProgrammingPearls.PhoneNumberSort
             // Create input file of phone numbers.
             string inputFilename = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "InputPhoneNumbers.txt");
             string outputFilename = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "OutputPhoneNumbers.txt");
-            SafeConsole.WriteLine("Creating input file of phone numbers.", ConsoleColor.White, stopwatch);
+            ThreadsafeConsole.WriteLine("Creating input file of phone numbers.", ConsoleColor.White, stopwatch);
             await CreateInputFile(inputFilename, phoneNumberCount);
-            SafeConsole.WriteLine("Done.", ConsoleColor.White, stopwatch);
+            ThreadsafeConsole.WriteLine("Done.", ConsoleColor.White, stopwatch);
             // Create sorted output file of phone numbers.
-            SafeConsole.WriteLine("Creating output file of phone numbers.", ConsoleColor.White, stopwatch);
+            ThreadsafeConsole.WriteLine("Creating output file of phone numbers.", ConsoleColor.White, stopwatch);
             TimeSpan sortStart = stopwatch.Elapsed;
             await sortPhoneNumberFile(inputFilename, outputFilename);
             TimeSpan sortEnd = stopwatch.Elapsed;
             TimeSpan sortDuration = sortEnd - sortStart;
-            SafeConsole.WriteLine("Done.", ConsoleColor.White, stopwatch);
-            SafeConsole.WriteLine($"Sort took {sortDuration.TotalSeconds.ToString(_elapsedSecondsFormat)} seconds.");
+            ThreadsafeConsole.WriteLine("Done.", ConsoleColor.White, stopwatch);
+            ThreadsafeConsole.WriteLine($"Sort took {sortDuration.TotalSeconds.ToString(_elapsedSecondsFormat)} seconds.");
         }
 
 
