@@ -99,7 +99,8 @@ namespace ErikTheCoder.ProgrammingPearls.PhoneNumberSort
                 while (!streamReader.EndOfStream)
                 {
                     var phoneNumber = await streamReader.ReadLineAsync();
-                    if (!string.IsNullOrEmpty(phoneNumber)) sortedPhoneNumbers.Add(phoneNumber);
+                    // ReSharper disable once AssignNullToNotNullAttribute
+                    if (!phoneNumber.IsNullOrEmpty()) sortedPhoneNumbers.Add(phoneNumber);
                 }
             }
             // Iterate over sorted set, writing phone numbers to output file.
@@ -124,7 +125,8 @@ namespace ErikTheCoder.ProgrammingPearls.PhoneNumberSort
                 {
                     // Convert phone number to integer.
                     var phoneNumberText = await streamReader.ReadLineAsync();
-                    if (string.IsNullOrEmpty(phoneNumberText)) continue;
+                    if (phoneNumberText.IsNullOrEmpty()) continue;
+                    // ReSharper disable once PossibleNullReferenceException
                     var phoneNumber = int.Parse($"{phoneNumberText.Substring(0, 3)}{phoneNumberText.Substring(4, 4)}"); // Remove dash before converting.
                     // Set bit in phone number array to indicate phone number is included in input file.
                     var (index, mask) = GetPhoneNumberMask(phoneNumber);
