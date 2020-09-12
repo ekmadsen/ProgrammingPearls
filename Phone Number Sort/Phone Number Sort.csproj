@@ -3,14 +3,14 @@
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>ErikTheCoder.ProgrammingPearls.PhoneNumberSort</RootNamespace>
     <AssemblyName>ErikTheCoder.ProgrammingPearls.PhoneNumberSort</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="ErikTheCoder.Logging" Version="1.0.6" />
-    <PackageReference Include="ErikTheCoder.Utilities" Version="1.0.1" />
+    <PackageReference Include="ErikTheCoder.Logging" Version="1.0.10" />
+    <PackageReference Include="ErikTheCoder.Utilities" Version="1.0.10" />
   </ItemGroup>
 
 </Project>
